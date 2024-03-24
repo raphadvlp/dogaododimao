@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- META TAG OG -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Salgadinhos Elas por Elas" />
+    <meta property="og:image" content="https://cardapio-three-black.vercel.app/assets/hamb-1.png" />
+    <meta property="og:description" content="O melhor salgadinho da baixada!" />
+    <meta property="og:site_name" content="ElasPorElas" />
+
+    
+    <link rel="stylesheet" href="styles/output.css" />
+
+    <title>Elas por Elas - O melhor salgadinho da baixada!</title>
+
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center">
+        <div class="w-full h-full flex flex-col justify-center items-center">
+            <img 
+                src="assets/logo.jpg" 
+                alt="Logo Elas por Elas"
+                class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
+            >
+
+            <h1 class="text-4xl mt-4 mb-2 font-bold text-white">
+                Elas por Elas Salgadinhos
+            </h1>
+
+            <span class="text-white font-medium">
+                Rua Vereador Armando de Oliveira, N°30 - São Mateus 
+            </span>
+
+            <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
+                <span class="text-white font-medium">Seg á Dom - 10:00 as 23:00</span>
+            </div>
+
+            <span class="text-white font-medium mt-5">
+                <a href="https://wa.me/5521992133688?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos!">(21) 99213-3688</a>
+            </span>
+
+        </div>
+    </header>
+    <!-- FIM HEADER -->
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+        Conheça nosso menu
+    </h2>
+
+    <h6 class="text-sm md:text-sm font-bold text-center mb-6">
+        Pedido mínimo: 10 Unidades.
+    </h6>
+
+    <!-- INICIO MENU -->
+    <div id="menu">
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/carne_moida.jpg" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Salgadinho de Carne Moida</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Salgadinho de Carne Moida"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/coxinhas.jpg" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Coxinhas</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Coxinhas"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/empadinha_camarao.webp" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Empadinha Camarão</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Empadinha Camarao"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/empadinha_queijo.jpg" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Empadinha de Queijo</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Empadinha de Queijo"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/empadinhas.jpg" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Empadinhas</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Empadinhas"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/queijo.jpg" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Bolinha de Queijo</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Bolinha de Queijo"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/queijo_presunto.jpg" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Salgadinho Queijo e Presunto</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Salgadinho Queijo e Presunto"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/risole.jpg" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Risole</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Risole"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/carne_moida.jpg" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Marmitinha de Frango</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Marmitinha de Frango"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img 
+                    src="assets/carne_moida.jpg" 
+                    alt="Salgadinho de Carne Moida"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+
+                <div>
+                    <p class="font-bold">Marmitinha de Frango</p>
+                    <p class="text-sm">Pão levinho de fermentação natural a Trigou, burger 160g, queijo prato e maionese da casa.</p>
+    
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-bold text-lg">R$ 5.00</p>
+                        <button 
+                            class="bg-rose-500 px-5 rounded add-to-card-btn"
+                            data-name="Marmitinha de Frango"
+                            data-price="5.00"
+                        >
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- FIM ITEM -->
+            
+            
+
+        </main>
+
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="font-bold text-3xl">
+                Bebidas
+            </h2>
+        </div>
+
+        
+        <!-- GRID DOCES -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" id="menu">
+                <!-- DOCES ITEM -->
+                <div class="flex gap-2 w-full">
+                    <img 
+                        src="assets/docinhos.png" 
+                        alt="Docinhos"
+                        class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                    />
+
+                    <div class="w-full">
+                        <p class="font-bold">Docinhos</p>
+                    
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <p class="font-bold text-lg">R$ 6</p>
+                            <button 
+                                class="bg-rose-500 px-5 rounded add-to-card-btn"
+                                data-name="Coca Lata"
+                                data-price="6"
+                            >
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div> 
+                </div>
+                <!-- FIM DOCES ITEM -->
+
+            </div>
+        <!-- FIM DOCES -->
+
+    </div>
+    <!-- FINAL MENU -->
+
+    <!-- MODAL CART -->
+    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
+        id="cart-modal"
+    >
+
+        <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
+            <h2 class="text-center font-bold text-2xl mb-2">Meu Carrinho</h2>
+
+            <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
+
+            <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
+
+            <p class="font-bold mt-4">Nome Completo: </p>
+            <input 
+                type="text"
+                placeholder="Digite seu nome completo"
+                id="client-name"
+                class="w-full border-2 p-1 rounded my-1"
+            >
+
+            <p class="text-red-500 hidden" id="name-warn">Digite seu nome completo</p>
+
+            <p class="font-bold mt-4">Endereço de entrega: </p>
+            <input 
+                type="text"
+                placeholder="Digite seu endereço completo"
+                id="address"
+                class="w-full border-2 p-1 rounded my-1"
+            >
+
+            <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo</p>
+
+
+            <div class="flex items-center justify-between mt-5 w-full">
+                <button id="close-modal-btn">Fechar</button>
+                <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
+            </div>
+
+            <p class="text-red-500 hidden" id="minimo-pedido-warn">Pedido mínimo 10 unidades</p>
+
+        </div>
+
+    </div>
+    <!-- FIM MODAL CART -->
+
+
+    <!-- BUTTON CART FOOTER -->
+    <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
+        <button 
+            class="flex items-center gap-2 text-white font-bold"
+            id="cart-btn"
+        >
+            (<span id="cart-count">0</span>)
+            Ver meu carrinho
+            <i class="fa fa-cart-plus text-lg text-white"></i>
+        </button>
+    </footer>
+    <!-- FIM BUTTON CART FOOTER -->
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
