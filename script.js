@@ -280,12 +280,13 @@ checkoutBtn.addEventListener("click", function(e) {
 
     //Enviar o pedido
     const cartItems = cart.map((item) => {
-        return `Produto: ${item.name}%0AQuantidade: ${item.quatity}`;
+        return `Produto: ${item.name}\nAQuantidade: ${item.quatity}`;
     }).join("%0A%0A");  // Duas quebras entre itens
 
     const pedido = encodeURIComponent(numeroDoPedido);
     const message = encodeURIComponent(cartItems);
-    const phone = "5521986559626";
+    // const phone = "5521986559626";
+    const phone = "5521992192594";
 
         // Montar a mensagem final
     let finalMessage = `${message}%0A%0A`;
