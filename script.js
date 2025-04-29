@@ -281,7 +281,8 @@ checkoutBtn.addEventListener("click", function(e) {
     //Enviar o pedido
     const cartItems = cart.map((item) => {
         return(
-            `Produto: ${item.name}%0AQuantidade: ${item.quatity}`
+            `Produto: ${item.name}%0`,
+            `Quantidade: ${item.quatity}`
             // `Produto: ${item.name}, Quantidade: ${item.quatity}, Preço: R$${item.price}`
         )
     }).join("%0A");
