@@ -384,7 +384,7 @@ function checkRestauranteOpen() {
     const hora = data.getHours();
     console.log(hora);
     
-    return hora >= 12 && hora < 24;
+    return hora >= 5 && hora < 24;
     //&& hora < 23; //Vai devolver como True (Restaurante está aberto)
 }
 
