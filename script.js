@@ -208,7 +208,9 @@ clientNameInput.addEventListener("input", function(event) {
 
 
 //Finalizar o pedido
-checkoutBtn.addEventListener("click", function() {
+checkoutBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    console.log("Botão de checkout clicado");
 
     const isOpen = checkRestauranteOpen();
     if(!isOpen) {
@@ -230,13 +232,11 @@ checkoutBtn.addEventListener("click", function() {
         return;
     }
 
-
-    //Gera número do pedido até 5 digitos
-    const numeroDoPedido = Math.floor(Math.random() * 100000);
-
-
     //Se o carrinho estiver vazio não finaliza o pedido, não faz nada
-    if(cart.length === 0) return;
+    if(cart.length === 0) {
+        console.log("Carrinho vazio"); // Log de depuração
+        return;
+    }
 
     //Verifica se estamos tentando enviar o pedido sem colocar o endereço, ele vai emitir o alerta
     if(addressInput.value === "" || clientNameInput.value === "") {
@@ -245,6 +245,7 @@ checkoutBtn.addEventListener("click", function() {
         nameWarn.classList.remove("hidden");
         addressInput.classList.add("border-red-500");
         clientNameInput.classList.add("border-red-500");
+        console.log("Campos obrigatórios não preenchidos"); // Log de depuração
         return;
     }
 
@@ -252,12 +253,33 @@ checkoutBtn.addEventListener("click", function() {
     const selectedPayment = document.querySelector('input[name="payment"]:checked');
     if(!selectedPayment) {
         paymentWarn.classList.remove("hidden");
+        console.log("Forma de pagamento não selecionada"); // Log de depuração
         return;
     }
     paymentWarn.classList.add("hidden");
 
+    let total = 0;
+    cart.forEach(item => {
+        total += item.price * item.quatity;
+    });
+
+    
+    //Gera número do pedido até 5 digitos
+    const numeroDoPedido = Math.floor(Math.random() * 100000);
     // Obter o valor do pagamento selecionado
     const paymentMethod = selectedPayment.value;
+
+     // Informações do PIX (substitua com seus dados reais)
+     const pixInfo = `
+        *DADOS PARA PAGAMENTO PIX*
+        Chave PIX: 123.456.789-09
+        Nome: Dogão do Dimão
+        Valor: R$${total.toFixed(2)}
+        
+        Ou escaneie o QR Code abaixo:
+        (imagem do QR Code)
+    `;
+
 
     //Enviar o pedido
     const cartItems = cart.map((item) => {
@@ -265,17 +287,26 @@ checkoutBtn.addEventListener("click", function() {
             `Produto: ${item.name}, Quantidade: ${item.quatity}`
             // `Produto: ${item.name}, Quantidade: ${item.quatity}, Preço: R$${item.price}`
         )
-    }).join("");
-
-    let total = 0;
-    cart.forEach(item => {
-        total += item.price * item.quatity;
-    });
+    }).join("%0A");
 
     const pedido = encodeURIComponent(numeroDoPedido);
-
     const message = encodeURIComponent(cartItems);
-    const phone = "5521986559626"
+    const phone = "5521986559626";
+
+        // Montar a mensagem final
+    let finalMessage = `${message}%0A%0A`;
+        finalMessage += `*Total do Pedido:* R$${total.toFixed(2)}%0A`;
+        finalMessage += `*Forma de Pagamento:* ${paymentMethod}%0A`;
+        
+        // Adicionar informações do PIX se for selecionado
+    if(paymentMethod === "Pix") {
+        finalMessage += `%0A${encodeURIComponent(pixInfo)}%0A`;
+    }
+        
+    finalMessage += `%0A*Endereço:* ${addressInput.value}%0A`;
+    finalMessage += `*Meu Nome:* ${clientNameInput.value}%0A`;
+    finalMessage += `*Número do Pedido:* ${pedido}%0A`;
+    finalMessage += `*Observações:* ${observations.value}`;
 
     //Aviso de pedido realizado
     Toastify({
@@ -291,7 +322,8 @@ checkoutBtn.addEventListener("click", function() {
         onClick: function(){} // Callback after click
       }).showToast();
 
-    window.open(`https://wa.me/${phone}?text=${message} | Forma de Pagamento: ${paymentMethod} | Total do Pedido: R$${total.toFixed(2)} | Endereço: ${addressInput.value} | Meu Nome: ${clientNameInput.value} | Numero do Pedido: ${pedido} | Observações: ${observations.value} `, "_blank");
+    // window.open(`https://wa.me/${phone}?text=${finalMessage} | Forma de Pagamento: ${paymentMethod} | Total do Pedido: R$${total.toFixed(2)} | Endereço: ${addressInput.value} | Meu Nome: ${clientNameInput.value} | Numero do Pedido: ${pedido} | Observações: ${observations.value} | text=${finalMessage} `, "_blank");
+    window.open(`https://wa.me/${phone}?text=${finalMessage}`, "_blank");
 
     cart = [];
     clientNameInput.value = "";
@@ -306,7 +338,7 @@ checkoutBtn.addEventListener("click", function() {
 function checkRestauranteOpen() {
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 10 && hora < 23;
+    return hora >= 10 && hora < 24;
     //&& hora < 23; //Vai devolver como True (Restaurante está aberto)
 }
 
