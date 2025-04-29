@@ -285,8 +285,8 @@ checkoutBtn.addEventListener("click", function(e) {
 
     const pedido = encodeURIComponent(numeroDoPedido);
     const message = encodeURIComponent(cartItems);
-    // const phone = "5521986559626";
-    const phone = "5521992192594";
+    const phone = "5521986559626";
+    // const phone = "5521992192594";
 
         // Montar a mensagem final
     let finalMessage = `${message}%0A%0A`;
