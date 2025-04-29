@@ -345,9 +345,9 @@ checkoutBtn.addEventListener("click", function(e) {
     }
         
     finalMessage += `%0A*Endereço:* ${addressInput.value}%0A`;
-    finalMessage += `%0A*Número:* ${numberAddress.value}%0A`;
-    finalMessage += `%0A*Complemento:* ${complement.value}%0A`;
-    finalMessage += `*Meu Nome:* ${clientNameInput.value}%0A`;
+    finalMessage += `*Número:* ${numberAddress.value}%0A`;
+    finalMessage += `*Complemento:* ${complement.value}%0A`;
+    finalMessage += `%0A*Meu Nome:* ${clientNameInput.value}%0A`;
     finalMessage += `*Número do Pedido:* ${pedido}%0A`;
     finalMessage += `*Observações:* ${observations.value}%0A`;
     finalMessage += `*Enviar o comprovante do pagamento aqui na mensagem*`;
