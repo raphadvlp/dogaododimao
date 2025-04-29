@@ -7,10 +7,12 @@ const checkoutBtn = document.getElementById("checkout-btn");
 const closeModalBtn = document.getElementById("close-modal-btn");
 const cartCounter = document.getElementById("cart-count");
 const addressInput = document.getElementById("address");
+const observations = document.getElementById("observation");
 const addressWarn = document.getElementById("address-warn");
 const nameWarn = document.getElementById("name-warn");
 const clientNameInput = document.getElementById("client-name");
 const minimoPedidoWarn = document.getElementById("minimo-pedido-warn");
+const paymentWarn = document.getElementById("payment-warn");
 
 //Lista do carrinho começa vazia
 let cart = [];
@@ -188,6 +190,11 @@ addressInput.addEventListener("input", function(event) {
     }
 })
 
+//Pegando o valor digitado no campo de observações
+observations.addEventListener("input", function(event) {
+    let inputValue = event.target.value;
+})
+
 //Pegando o valor digitado no campo de nome
 clientNameInput.addEventListener("input", function(event) {
     let inputNameValue = event.target.value;
@@ -233,6 +240,7 @@ checkoutBtn.addEventListener("click", function() {
 
     //Verifica se estamos tentando enviar o pedido sem colocar o endereço, ele vai emitir o alerta
     if(addressInput.value === "" || clientNameInput.value === "") {
+
         addressWarn.classList.remove("hidden");
         nameWarn.classList.remove("hidden");
         addressInput.classList.add("border-red-500");
@@ -240,21 +248,38 @@ checkoutBtn.addEventListener("click", function() {
         return;
     }
 
+    // Verificar se uma forma de pagamento foi selecionada
+    const selectedPayment = document.querySelector('input[name="payment"]:checked');
+    if(!selectedPayment) {
+        paymentWarn.classList.remove("hidden");
+        return;
+    }
+    paymentWarn.classList.add("hidden");
+
+    // Obter o valor do pagamento selecionado
+    const paymentMethod = selectedPayment.value;
+
     //Enviar o pedido
     const cartItems = cart.map((item) => {
         return(
-            `Produto: ${item.name}, Quantidade: ${item.quatity}, Preço: R$${item.price}`
+            `Produto: ${item.name}, Quantidade: ${item.quatity},`
+            // `Produto: ${item.name}, Quantidade: ${item.quatity}, Preço: R$${item.price}`
         )
     }).join("");
+
+    let total = 0;
+    cart.forEach(item => {
+        total += item.price * item.quatity;
+    });
 
     const pedido = encodeURIComponent(numeroDoPedido);
 
     const message = encodeURIComponent(cartItems);
-    const phone = "5521992192594"
+    const phone = "5521986559626"
 
     //Aviso de pedido realizado
     Toastify({
-        text: "Pedido realizado 😎",
+        text: "Pedido Enviado para o Whatsapp 😎",
         duration: 20000,
         close: true,
         gravity: "top", // `top` or `bottom`
@@ -266,11 +291,12 @@ checkoutBtn.addEventListener("click", function() {
         onClick: function(){} // Callback after click
       }).showToast();
 
-    window.open(`https://wa.me/${phone}?text=${message} | Endereço: ${addressInput.value} | Meu Nome: ${clientNameInput.value} | Numero do Pedido: ${pedido} `, "_blank");
+    window.open(`https://wa.me/${phone}?text=${message} | Forma de Pagamento: ${paymentMethod} | Total do Pedido: R$${total.toFixed(2)} | Endereço: ${addressInput.value} | Meu Nome: ${clientNameInput.value} | Numero do Pedido: ${pedido} | Observações: ${observations.value} `, "_blank");
 
     cart = [];
     clientNameInput.value = "";
     addressInput.value = "";
+    observations.value = "";
     updateCartModal();
     cartModal.style.display = "none";
 })
