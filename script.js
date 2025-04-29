@@ -262,7 +262,7 @@ checkoutBtn.addEventListener("click", function() {
     //Enviar o pedido
     const cartItems = cart.map((item) => {
         return(
-            `Produto: ${item.name}, Quantidade: ${item.quatity},`
+            `Produto: ${item.name}, Quantidade: ${item.quatity}`
             // `Produto: ${item.name}, Quantidade: ${item.quatity}, Preço: R$${item.price}`
         )
     }).join("");
