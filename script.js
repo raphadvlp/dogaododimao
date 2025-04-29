@@ -7,12 +7,15 @@ const checkoutBtn = document.getElementById("checkout-btn");
 const closeModalBtn = document.getElementById("close-modal-btn");
 const cartCounter = document.getElementById("cart-count");
 const addressInput = document.getElementById("address");
+const numberAddress = document.getElementById("numberAddress");
+const complement = document.getElementById("complement");
 const observations = document.getElementById("observation");
 const addressWarn = document.getElementById("address-warn");
 const nameWarn = document.getElementById("name-warn");
 const clientNameInput = document.getElementById("client-name");
 const minimoPedidoWarn = document.getElementById("minimo-pedido-warn");
 const paymentWarn = document.getElementById("payment-warn");
+
 
 //Lista do carrinho começa vazia
 let cart = [];
@@ -35,6 +38,26 @@ closeModalBtn.addEventListener("click", function() {
     cartModal.style.display = "none";
 })
 
+document.getElementById("cep").addEventListener("blur", function() {
+    if(this.value.length === 8) { // Verifica se tem 8 dígitos
+        consultaCep();
+    } else {
+        Toastify({
+            text: "CEP Inválido ❌",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "#ef4444",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
+        return;
+    }
+});
+
 
 menu.addEventListener("click", function(event) {
     //Verifica se clicamos no item com essa classe ou no pai ou no filho | o closest faz isso
@@ -48,6 +71,29 @@ menu.addEventListener("click", function(event) {
         addToCart(name, price);
     }
 })
+
+function consultaCep() {
+    let cep = document.getElementById("cep").value.replace(/\D/g, ''); // Remove não-dígitos
+    let url = `https://viacep.com.br/ws/${cep}/json/`;
+
+    if(cep.length != 8) {
+        return;
+    }
+
+    fetch(url)
+        .then(function(response) {
+        response.json().then(function(data) {
+            console.log(data);
+            mostrarEndereco(data);
+        })
+    });
+}
+
+function mostrarEndereco(dados) {
+    addressInput.value = `${dados.logradouro} - ${dados.localidade}/${dados.uf}`;
+    addressWarn.classList.add("hidden");
+    addressInput.classList.remove("border-red-500");
+}
 
 //Função para adicionar no carrinho
 function addToCart(name, price) {
@@ -299,6 +345,8 @@ checkoutBtn.addEventListener("click", function(e) {
     }
         
     finalMessage += `%0A*Endereço:* ${addressInput.value}%0A`;
+    finalMessage += `%0A*Número:* ${numberAddress.value}%0A`;
+    finalMessage += `%0A*Complemento:* ${complement.value}%0A`;
     finalMessage += `*Meu Nome:* ${clientNameInput.value}%0A`;
     finalMessage += `*Número do Pedido:* ${pedido}%0A`;
     finalMessage += `*Observações:* ${observations.value}%0A`;
@@ -334,7 +382,9 @@ checkoutBtn.addEventListener("click", function(e) {
 function checkRestauranteOpen() {
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 10 && hora < 24;
+    console.log(hora);
+    
+    return hora >= 12 && hora < 24;
     //&& hora < 23; //Vai devolver como True (Restaurante está aberto)
 }
 
