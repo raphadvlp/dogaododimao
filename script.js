@@ -280,7 +280,7 @@ checkoutBtn.addEventListener("click", function(e) {
 
     //Enviar o pedido
     const cartItems = cart.map((item) => {
-        return `Produto: ${item.name}\nAQuantidade: ${item.quatity}`;
+        return `Produto: ${item.name}\nQuantidade: ${item.quatity}`;
     }).join("%0A%0A");  // Duas quebras entre itens
 
     const pedido = encodeURIComponent(numeroDoPedido);
@@ -302,6 +302,7 @@ checkoutBtn.addEventListener("click", function(e) {
     finalMessage += `*Meu Nome:* ${clientNameInput.value}%0A`;
     finalMessage += `*Número do Pedido:* ${pedido}%0A`;
     finalMessage += `*Observações:* ${observations.value}`;
+    finalMessage += `*Enviar o comprovante do pagamento aqui na mensagem*`;
 
     //Aviso de pedido realizado
     Toastify({
