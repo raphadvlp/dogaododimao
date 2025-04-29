@@ -275,16 +275,15 @@ checkoutBtn.addEventListener("click", function(e) {
         Chave PIX: 123.456.789-09
         Nome: Dogão do Dimão
         Valor: R$${total.toFixed(2)}
-        
-        Ou escaneie o QR Code abaixo:
-        (imagem do QR Code)
     `;
 
 
     //Enviar o pedido
     const cartItems = cart.map((item) => {
         return(
-            `Produto: ${item.name}, Quantidade: ${item.quatity}`
+            `Produto: ${item.name}%0A
+            Quantidade: ${item.quatity}%0A
+            `
             // `Produto: ${item.name}, Quantidade: ${item.quatity}, Preço: R$${item.price}`
         )
     }).join("%0A");
