@@ -301,7 +301,7 @@ checkoutBtn.addEventListener("click", function(e) {
     finalMessage += `%0A*Endereço:* ${addressInput.value}%0A`;
     finalMessage += `*Meu Nome:* ${clientNameInput.value}%0A`;
     finalMessage += `*Número do Pedido:* ${pedido}%0A`;
-    finalMessage += `*Observações:* ${observations.value}`;
+    finalMessage += `*Observações:* ${observations.value}%0A`;
     finalMessage += `*Enviar o comprovante do pagamento aqui na mensagem*`;
 
     //Aviso de pedido realizado
